@@ -1,0 +1,39 @@
+{
+  "name": "@netshards/ns-plant",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm test",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZiggyProductions/ns-plant.git"
+  },
+  "keywords": [
+    "netshards"
+  ],
+  "author": "Gevorg Aznauryan aka GAZ <gazilius@gmail.com> (http://ziggy.productions/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZiggyProductions/ns-plant/issues"
+  },
+  "homepage": "https://github.com/ZiggyProductions/ns-plant#readme",
+  "devDependencies": {
+    "better-assert": "^1.0.2",
+    "expect.js": "^0.3.1",
+    "mocha": "^3.4.2",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
+  },
+  "dependencies": {
+    "@netshards/ns-monitor": "^1.0.2",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "pug": "~2.0.0-beta11",
+    "serve-favicon": "~2.4.2"
+  }
+}
