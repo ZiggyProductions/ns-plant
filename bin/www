@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('ns-plant:server');
 var http = require('http');
+global._ = require('underscore');
+global.ns = require('../index');
 
 /**
  * Get port from environment and store in Express.
