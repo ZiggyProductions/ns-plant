@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url('../images/bg.png');
+  background-size: cover;
 }
 
 a {
@@ -166,4 +168,18 @@ a {
   #hexGrid {
     font-size: 13px;
   }
+}
+
+.intro {color:#fff;}
+.intro .hive {background: url("../images/hive.png") no-repeat;background-size: contain ;min-height: 400px;}
+.intro .circle {
+  background-color: #EEEEEE;
+  color: #FFFFFF;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 17px;
+  padding: 15px;
+}
+.intro .circle.exit {
+  background-color: #60004e;
 }

@@ -3,12 +3,56 @@
 /**
  * Module dependencies.
  */
-
-var app = require('../app');
+require('dotenv').config({path: __dirname+'/../.env'});
 var debug = require('debug')('ns-plant:server');
-var http = require('http');
+
+if(process.env.PROFILE == 'development') {
+  var http = require('https');
+  var fs = require('fs');
+  var options = {
+    key: fs.readFileSync( __dirname+'/../certs/localhost.key' ),
+    cert: fs.readFileSync( __dirname+'/../certs/localhost.cert' ),
+    requestCert: false,
+    rejectUnauthorized: false
+  };
+}else{
+  var http = require('http');
+  var options={};
+}
+
+global.redis = require('redis').createClient();
+var knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DBASE,
+    charset  : 'utf8',
+    debug: false,
+    typeCast: function (field, next) {
+      if (field.type == "BIT" && field.length == 1) {
+        var bit = field.string();
+
+        var b = (bit === null) ? null : bit.charCodeAt(0);
+        return !!b;
+      }
+      return next();
+    },
+    pool: {
+      min: 0,
+      max: 10
+    }, acquireConnectionTimeout: 10000
+  }
+});
+global.bookshelf = require('bookshelf')(knex);
+//global.ModelBase = require('bookshelf-modelbase')(bookshelf);
 global._ = require('underscore');
+var app = require('../app');
 global.ns = require('../index');
+global.StorageService = require('../services/storage')(redis,knex);
+
+
 
 /**
  * Get port from environment and store in Express.
@@ -21,7 +65,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -1,0 +1,21 @@
+<% extend 'layout' %>
+
+<div class="container intro">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-center">
+      <h2>Error</h2>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <%= this.message %>
+      <%= JSON.stringify(this.error) %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+

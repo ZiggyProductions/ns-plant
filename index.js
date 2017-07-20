@@ -14,6 +14,15 @@ server.on('connection', (socket) => {
         cb('done');
     });
 
+    socket.on('meta', (data, cb) => {
+        StorageService.saveNodes(clients).then(cb,cb);
+    });
+
+    socket.on('req-port', (os, cb) => {
+        StorageService.leasePort().then(cb,cb);
+    });
+
+
 });
 
 exports.server = server;

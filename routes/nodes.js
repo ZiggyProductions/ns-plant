@@ -3,6 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  //StorageService.leasePort().then((p)=>{console.log(p)},(e)=>{console.error(e)});
   res.send(_.toArray(ns.clients));
 });
 router.get('/alive', function(req, res, next) {
