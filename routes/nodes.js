@@ -48,5 +48,12 @@ router.get('/hosts', function(req, res, next) {
   }catch(err){}
   res.send(hosts);
 });
+router.get('/ds-spots', function(req, res, next) {
+  res.send(_.map(_.filter(ns.clients,function(c){
+    return c.connected && c.meta.node == 'ns-cell';
+  }),function(n){
+    return n.meta.ds;
+  }));
+});
 
 module.exports = router;

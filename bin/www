@@ -64,8 +64,10 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(options,app);
+if(process.env.PROFILE == 'development')
+  var server = http.createServer(options,app);
+else
+  var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

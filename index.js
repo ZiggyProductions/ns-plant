@@ -15,6 +15,7 @@ server.on('connection', (socket) => {
     });
 
     socket.on('meta', (data, cb) => {
+        //console.log(socket);
         StorageService.saveNodes(clients).then(cb,cb);
     });
 

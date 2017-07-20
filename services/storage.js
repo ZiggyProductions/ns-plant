@@ -46,8 +46,8 @@ function StorageService(redis,knex) {
         },
         saveNodes: function (data) {
             return new Promise(function (fulfill, reject) {
-
-                // loading nodes from redis
+                
+                // saving nodes to redis
                 redis.set('ns-nodes', JSON.stringify(data), function (error, res) {
                     if (!error)
                         fulfill('Done');
