@@ -35,6 +35,8 @@
     "connect-redis": "^3.3.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "deepstream.io": "^2.3.6",
+    "deepstream.io-msg-redis": "^1.0.4",
     "dotenv": "^4.0.0",
     "ect": "^0.5.9",
     "ejs": "^2.5.6",
@@ -50,6 +52,7 @@
     "pug": "~2.0.0-beta11",
     "redis": "^2.7.1",
     "serve-favicon": "~2.4.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "uws": "^8.14.0"
   }
 }
