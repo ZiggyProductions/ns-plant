@@ -52,7 +52,7 @@ var app = require('../app');
 global.ns = require('../index');
 global.StorageService = require('../services/storage')(redis,knex);
 global.deeps = require('../services/ds');
-deeps.init();
+//deeps.init();
 
 
 
