@@ -61,8 +61,7 @@ var auth = require('./routes/auth');
 var players = require('./routes/players');
 var nodes = require('./routes/nodes');
 var game = require('./routes/game');
-var ds = require('./services/ds');
-ds.init();
+
 
 passport.serializeUser(function(player, done) {
     done(null, player.id);
@@ -83,7 +82,7 @@ passport.use(new FacebookStrategy({
     function(accessToken, refreshToken, profile, done) {
         Player.findOrCreate(profile).then((player)=>{
             console.log('yes')
-            ds.addPlayer(player);
+            deeps.addPlayer(player);
             done(null, player);
         },(err)=>{
             console.error('no',err);
@@ -100,7 +99,7 @@ passport.use(new GitHubStrategy({
     function(accessToken, refreshToken, profile, done) {
         Player.findOrCreate(profile).then((player)=>{
             console.log('yes')
-            ds.addPlayer(player);
+            deeps.addPlayer(player);
             done(null, player);
         },(err)=>{
             console.error('no',err);
@@ -121,7 +120,7 @@ passport.use(new LocalStrategy({
             if (!player.validPassword(password)) {
                 return done(null, false, {message: 'Incorrect password.'});
             }
-            ds.addPlayer(player);
+            deeps.addPlayer(player);
             return done(null, player);
         }, (err)=> {
             console.error('no', err);
